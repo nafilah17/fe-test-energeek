@@ -1,0 +1,118 @@
+{
+    "product_items": [{
+            "id": 1,
+            "no": 1,
+            "code": "BRG-001",
+            "name": "Komputer",
+            "minimal_stock": 1,
+            "is_ready": true,
+            "stock": 10,
+            "stock_status": "Aman"
+        },
+        {
+            "id": 2,
+            "no": 2,
+            "code": "BRG-002",
+            "name": "Laptop",
+            "minimal_stock": 10,
+            "is_ready": true,
+            "stock": 15,
+            "stock_status": "Dibawah minimal"
+        },
+        {
+            "id": 3,
+            "no": 3,
+            "code": "BRG-003",
+            "name": "Mouse",
+            "minimal_stock": 4,
+            "is_ready": true,
+            "stock": 7,
+            "stock_status": "Aman"
+        },
+        {
+            "id": 4,
+            "no": 4,
+            "code": "BRG-004",
+            "name": "PS4",
+            "minimal_stock": 1,
+            "is_ready": true,
+            "stock": 8,
+            "stock_status": "Aman"
+        },
+        {
+            "id": 5,
+            "no": 5,
+            "code": "BRG-005",
+            "name": "Monitor",
+            "minimal_stock": 4,
+            "is_ready": true,
+            "stock": 3,
+            "stock_status": "Dibawah minimal"
+        },
+        {
+            "id": 6,
+            "no": 6,
+            "code": "BRG-006",
+            "name": "Printer",
+            "minimal_stock": 2,
+            "is_ready": true,
+            "stock": 3,
+            "stock_status": "Aman"
+        },
+        {
+            "id": 7,
+            "no": 7,
+            "code": "BRG-007",
+            "name": "White Board",
+            "minimal_stock": 1,
+            "is_ready": true,
+            "stock": 1,
+            "stock_status": "Aman"
+        },
+        {
+            "id": 8,
+            "no": 8,
+            "code": "BRG-008",
+            "name": "Rubik",
+            "minimal_stock": 5,
+            "is_ready": true,
+            "stock": 1,
+            "stock_status": "Dibawah minimal"
+        },
+        {
+            "id": 9,
+            "no": 9,
+            "code": "BRG-009",
+            "name": "Kursi",
+            "minimal_stock": 12,
+            "is_ready": true,
+            "stock": 0,
+            "stock_status": "Dibawah minimal"
+        },
+        {
+            "id": 10,
+            "no": 10,
+            "code": "BRG-010",
+            "name": "Meja",
+            "minimal_stock": 12,
+            "is_ready": true,
+            "stock": 1,
+            "stock_status": "Dibawah minimal"
+        }
+    ],
+    "history": [{
+            "id": 1,
+            "no": 1,
+            "date_transaction": "2022-02-02T22:22:22",
+            "type_transaction": "Menambah",
+            "total": 1
+        },
+        {
+            "id": 2,
+            "no": 2,
+            "date_transaction": "2022-03-03T22:22:22",
+            "type_transaction": "Mengurangi",
+            "total": 2
+        }
+    ]
+}
