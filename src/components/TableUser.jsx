@@ -12,7 +12,7 @@ import { faClockRotateLeft } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
 import { API_URL } from "../utils/constants";
 import axios from "axios";
-import AddTransactionModal from "./AddTransactionModal";
+// import AddTransactionModal from "./AddTransactionModal";
 
 export default class TableAdmin extends Component {
   constructor(props) {

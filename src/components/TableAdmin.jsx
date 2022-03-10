@@ -1,12 +1,4 @@
-import {
-  Table,
-  Container,
-  Button,
-  Row,
-  Col,
-  Modal,
-  Form,
-} from "react-bootstrap";
+import { Table, Container, Button, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTrash,
@@ -16,7 +8,7 @@ import {
 import React, { Component } from "react";
 import { API_URL } from "../utils/constants";
 import axios from "axios";
-import AddItemModal from "./AddItemModal";
+// import AddItemModal from "./AddItemModal";
 // import EditItemModal from "./EditItemModal";
 
 export default class TableAdmin extends Component {
