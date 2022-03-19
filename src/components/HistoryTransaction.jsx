@@ -13,18 +13,18 @@ export default class HistoryTransaction extends Component {
     };
   }
 
-  componentDidMount() {
-    axios
-      .get(API_URL + "history")
-      .then((res) => {
-        const transaction = res.data;
-        this.setState({ transaction });
-        console.log("data", transaction);
-      })
-      .catch((error) => {
-        console.log("err", error);
-      });
-  }
+  // componentDidMount() {
+  //   axios
+  //     .get(API_URL + "history")
+  //     .then((res) => {
+  //       const transaction = res.data;
+  //       this.setState({ transaction });
+  //       console.log("data", transaction);
+  //     })
+  //     .catch((error) => {
+  //       console.log("err", error);
+  //     });
+  // }
   render() {
     const { transaction } = this.state;
     return (

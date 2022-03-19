@@ -13,12 +13,12 @@ export default class App extends Component {
             <Route path="/" exact>
               <Admin />
             </Route>
-            <Route path="/user" exact>
+            {/* <Route path="/user" exact>
               <User />
             </Route>
             <Route path="/user-history" exact>
               <UserHistory />
-            </Route>
+            </Route> */}
           </Switch>
         </main>
       </BrowserRouter>

@@ -14,22 +14,75 @@ import {
   faClockRotateLeft,
   faPencil,
 } from "@fortawesome/free-solid-svg-icons";
-import { API_URL } from "../utils/constants";
-import axios from "axios";
+import ProductService from "../services/service";
 
 const TableAdmin = () => {
-  // get data
-  const [product, setProduct] = useState([]);
-  // modal add inventory
-  const [showAdd, setShowAdd] = useState(false);
+  // getAll data
+  const [products, setProducts] = useState([]);
 
-  // modal edit inventory
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const getProducts = () => {
+    ProductService.getAll().then((response) => {
+      setProducts(response.data);
+      console.log("data product", response.data);
+    });
+  };
+
+  // initialstate
+  const initialstateProduct = {
+    id: null,
+    no: "",
+    code: "",
+    name: "",
+    is_ready: false,
+    minimal_stock: "",
+    stock: "",
+  };
+  // get data
+  const [product, setProduct] = useState(initialstateProduct);
+
+  function handleInputChange(e) {
+    setProduct({ value: e.target.value });
+  }
+
+  const handleSubmit = (e) => {
+    alert("A name was submitted");
+    e.preventDefault();
+    var data = {
+      code: product.code,
+      name: product.name,
+      minimal_stock: product.minimal_stock,
+      stock: product.stock,
+      no: product.no,
+      is_ready: product.is_ready,
+    };
+    ProductService.create(data)
+      .then((res) => {
+        // setProduct({
+        //   id: res.data.id,
+        //   code: res.data.code,
+        //   name: res.data.name,
+        //   minimal_stock: res.data.minimal_stock,
+        //   stock: res.data.stock,
+        //   is_ready: res.data.is_ready,
+        // });
+        console.log("res submit", res.data);
+      })
+      .catch((err) => console.log("err", err));
+  };
+  // state add inventory
+  const [showAdd, setShowAdd] = useState(false);
+  // state edit inventory
   const [showEdit, setShowEdit] = useState(false);
-  // post data
-  const [code, setCode] = useState("");
-  const [name, setName] = useState("");
-  const [minimal_stock, setMinimalStock] = useState("");
-  const [stock, setStock] = useState("");
+
+  // // post data
+  // const [code, setCode] = useState("");
+  // const [name, setName] = useState("");
+  // const [minimal_stock, setMinimalStock] = useState("");
+  // const [stock, setStock] = useState("");
 
   const handleCloseAdd = () => setShowAdd(false);
   const handleShowAdd = () => setShowAdd(true);
@@ -37,50 +90,6 @@ const TableAdmin = () => {
   const handleCloseEdit = () => setShowEdit(false);
   const handleShowEdit = () => setShowEdit(true);
 
-  // useEffect(() => {
-  //   fetch(API_URL + "product_items")
-  //     .then((response) => {
-  //       console.log("response", response);
-  //       return response.json();
-  //     })
-  //     .then((product) => {
-  //       setProduct(product);
-  //       console.log("product", product);
-  //     })
-  //     .catch((err) => {
-  //       console.log("Error Reading data " + err);
-  //     });
-  // }, []);
-
-  axios
-    .get(API_URL + "product_items")
-    .then((product) => {
-      setProduct(product.data);
-      console.log("product", product.data);
-    })
-    .catch((err) => {
-      console.log("Error Reading data " + err);
-    });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post(API_URL + "product_items", {
-        // no,
-        // id,
-        name,
-        code,
-        minimal_stock,
-        stock,
-      })
-      .then((response) => {
-        // console.log("status", response.status);
-        console.log("submit", response.postInventory);
-      })
-      .catch((err) => {
-        console.log("Error Reading data " + err);
-      });
-  };
   return (
     <div>
       <Container>
@@ -108,15 +117,15 @@ const TableAdmin = () => {
             </tr>
           </thead>
           <tbody>
-            {product &&
-              product.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.no}</td>
-                  <td>{item.code}</td>
-                  <td>{item.name}</td>
-                  <td>{item.minimal_stock}</td>
-                  <td>{item.stock}</td>
-                  <td>{item.stock_status}</td>
+            {products &&
+              products.map((product) => (
+                <tr key={product.id}>
+                  <td>{product.no}</td>
+                  <td>{product.code}</td>
+                  <td>{product.name}</td>
+                  <td>{product.minimal_stock}</td>
+                  <td>{product.stock}</td>
+                  <td>{product.stock_status}</td>
                   <td>
                     <Button
                       variant="outline-dark"
@@ -149,38 +158,42 @@ const TableAdmin = () => {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="code">
               <Form.Label>Kode Barang</Form.Label>
               <Form.Control
-                onChange={(e) => setCode(e.target.value)}
-                value={code}
+                value={product.code}
+                onChange={handleInputChange}
+                name="code"
                 type="text"
                 placeholder="Masukkan kode barang"
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="name">
               <Form.Label>Nama Barang</Form.Label>
               <Form.Control
-                onChange={(e) => setName(e.target.value)}
-                value={name}
+                value={product.name}
+                onChange={handleInputChange}
+                name="name"
                 type="text"
                 placeholder="Masukkan nama barang"
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="minimal_stock">
               <Form.Label>Stok Minimal</Form.Label>
               <Form.Control
-                onChange={(e) => setMinimalStock(e.target.value)}
-                value={minimal_stock}
+                value={product.minimal_stock}
+                onChange={handleInputChange}
+                name="minimal_stock"
                 type="number"
                 placeholder="Contoh: 1"
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="stock">
               <Form.Label>Stok Awal</Form.Label>
               <Form.Control
-                onChange={(e) => setStock(e.target.value)}
-                value={stock}
+                value={product.stock}
+                onChange={handleInputChange}
+                name="stock"
                 type="number"
                 placeholder="Contoh: 1"
               />
@@ -195,7 +208,7 @@ const TableAdmin = () => {
       </Modal>
 
       {/* modal edit */}
-      <Modal show={showEdit} onHide={handleCloseEdit}>
+      {/* <Modal show={showEdit} onHide={handleCloseEdit}>
         <Modal.Header closeButton>
           <Modal.Title>Tambah Item</Modal.Title>
         </Modal.Header>
@@ -233,9 +246,12 @@ const TableAdmin = () => {
         <Modal.Footer>
           <Button variant="primary">Submit</Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };
 
 export default TableAdmin;
+
+// // modal form
+//

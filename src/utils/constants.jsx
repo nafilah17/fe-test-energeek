@@ -1,1 +1,7 @@
-export const API_URL = "http://localhost:5000/";
+import axios from "axios";
+export default axios.create({
+  baseURL: "http://localhost:5000/",
+  headers: {
+    "Content-type": "application/json",
+  },
+});

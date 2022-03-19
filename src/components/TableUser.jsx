@@ -35,18 +35,18 @@ export default class TableAdmin extends Component {
     });
   };
 
-  componentDidMount() {
-    axios
-      .get(API_URL + "product_items")
-      .then((res) => {
-        const products = res.data;
-        this.setState({ products });
-        console.log("data", products);
-      })
-      .catch((error) => {
-        console.log("err", error);
-      });
-  }
+  // componentDidMount() {
+  //   axios
+  //     .get(API_URL + "product_items")
+  //     .then((res) => {
+  //       const products = res.data;
+  //       this.setState({ products });
+  //       console.log("data", products);
+  //     })
+  //     .catch((error) => {
+  //       console.log("err", error);
+  //     });
+  // }
   render() {
     const { products } = this.state;
     return (
