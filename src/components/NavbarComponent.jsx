@@ -15,7 +15,7 @@ export default class NavbarComponent extends Component {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
-              Signed in as: <a href="#login">Administrator</a>
+              <a href="/">Log Out</a>
             </Navbar.Text>
           </Navbar.Collapse>
         </Container>

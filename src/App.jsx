@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NavbarComponent } from "./components";
-import { Admin, User, UserHistory } from "./pages";
+import { Admin, User, UserHistory, Login } from "./pages";
 
 export default class App extends Component {
   render() {
@@ -9,17 +9,20 @@ export default class App extends Component {
       <BrowserRouter>
         <NavbarComponent />
         <main>
-          <Switch>
-            <Route path="/" exact>
-              <Admin />
-            </Route>
-            {/* <Route path="/user" exact>
-              <User />
-            </Route>
-            <Route path="/user-history" exact>
-              <UserHistory />
+          <Routes>
+            <Route path="/" exact element={<Login />} />
+            {/* <Login />
             </Route> */}
-          </Switch>
+            <Route path="/admin" element={<Admin />} />
+            {/* <Admin />
+            </Route> */}
+            <Route path="/user" element={<User />} />
+            {/* <User />
+            </Route> */}
+            <Route path="/user-history" element={<UserHistory />} />
+            {/* <UserHistory />
+            </Route> */}
+          </Routes>
         </main>
       </BrowserRouter>
     );
