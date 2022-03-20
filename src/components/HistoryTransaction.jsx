@@ -9,6 +9,7 @@ import {
   Modal,
   Form,
 } from "react-bootstrap";
+import swal from "sweetalert";
 
 const HistoryTransaction = () => {
   useEffect(() => {
@@ -36,7 +37,6 @@ const HistoryTransaction = () => {
   const handleShowModal = () => setShowModal(true);
 
   const handleSubmitModal = (e) => {
-    alert(" Transaction was submitted");
     e.preventDefault();
     axios
       .post("http://localhost:5000/history/", {
@@ -46,8 +46,10 @@ const HistoryTransaction = () => {
       })
       .then((res) => {
         console.log("res submit", res.data);
+        swal("Success!");
       })
       .catch((err) => console.log("err", err));
+    swal("Error!");
   };
 
   return (

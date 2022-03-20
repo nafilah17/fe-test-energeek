@@ -16,6 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 const TableAdmin = () => {
   useEffect(() => {
@@ -42,7 +43,6 @@ const TableAdmin = () => {
 
   // POST
   const handleSubmit = (e) => {
-    alert(" Data was submitted");
     e.preventDefault();
     axios
       .post("http://localhost:5000/product_items/", {
@@ -55,13 +55,14 @@ const TableAdmin = () => {
       })
       .then((res) => {
         console.log("res submit", res.data);
+        swal("Success!");
       })
       .catch((err) => console.log("err", err));
+    swal("Error!");
   };
 
   // PUT
   const handleUpdate = (e) => {
-    alert("A name was editted");
     e.preventDefault();
     axios
       .put("http://localhost:5000/product_items/", {
@@ -74,8 +75,10 @@ const TableAdmin = () => {
       })
       .then((res) => {
         console.log("res edit", res.data);
+        swal("Data has editted!");
       })
       .catch((err) => console.log("err", err));
+    swal("Data unable to edit");
   };
 
   // REMOVE
@@ -85,21 +88,22 @@ const TableAdmin = () => {
       .then((response) => {
         console.log("delete", response);
       });
+    swal("Deleted!");
   };
 
   // state add inventory
   const [showAdd, setShowAdd] = useState(false);
-  // state edit inventory
-  const [showEdit, setShowEdit] = useState(false);
 
   const handleCloseAdd = () => setShowAdd(false);
   const handleShowAdd = () => setShowAdd(true);
+
+  // state edit inventory
+  const [showEdit, setShowEdit] = useState(false);
 
   const handleCloseEdit = () => setShowEdit(false);
   const handleShowEdit = () => setShowEdit(true);
 
   const navigate = useNavigate();
-
 
   return (
     <div>

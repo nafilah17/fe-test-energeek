@@ -77,7 +77,7 @@ const TableUser = () => {
                   <td>{item.name}</td>
                   <td>{item.minimal_stock}</td>
                   <td>{item.stock}</td>
-                  <td>{item.stock_status}</td>
+                  {item.stock > 1 ? <td>Aman</td> : <td>Tidak Aman</td>}
                   <td>
                     <Button
                       variant="outline-dark"
