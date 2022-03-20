@@ -14,7 +14,6 @@ import {
   faClockRotateLeft,
   faPencil,
 } from "@fortawesome/free-solid-svg-icons";
-// import ProductService from "../services/service";
 import axios from "axios";
 
 const TableAdmin = () => {
