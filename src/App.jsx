@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NavbarComponent } from "./components";
-import { Admin, User, UserHistory, Login } from "./pages";
+import { Admin, User, Login, UserHistory } from "./pages";
 
 export default class App extends Component {
   render() {
