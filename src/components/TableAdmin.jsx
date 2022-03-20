@@ -134,7 +134,7 @@ const TableAdmin = () => {
                   <td>{product.name}</td>
                   <td>{product.minimal_stock}</td>
                   <td>{product.stock}</td>
-                  <td>{product.stock_status}</td>
+                  {product.stock > 1 ? <td>Aman</td> : <td>Tidak Aman</td>}
                   <td>
                     <Button
                       variant="outline-dark"
