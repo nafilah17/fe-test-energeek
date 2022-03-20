@@ -19,7 +19,7 @@ export default class App extends Component {
             <Route path="/user" element={<User />} />
             {/* <User />
             </Route> */}
-            <Route path="/user-history" element={<UserHistory />} />
+            <Route path="/user-history/:id" element={<UserHistory />} />
             {/* <UserHistory />
             </Route> */}
           </Routes>

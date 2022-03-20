@@ -15,6 +15,7 @@ import {
   faPencil,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const TableAdmin = () => {
   useEffect(() => {
@@ -51,7 +52,6 @@ const TableAdmin = () => {
         minimal_stock,
         stock,
         stock_status: stock_status ?? "Aman",
-        // is_ready,
       })
       .then((res) => {
         console.log("res submit", res.data);
@@ -97,6 +97,9 @@ const TableAdmin = () => {
 
   const handleCloseEdit = () => setShowEdit(false);
   const handleShowEdit = () => setShowEdit(true);
+
+  const navigate = useNavigate();
+
 
   return (
     <div>
@@ -145,7 +148,7 @@ const TableAdmin = () => {
                     <Button
                       variant="outline-dark"
                       className="mx-1"
-                      href="/user-history"
+                      onClick={() => navigate(`/user-history/${product.id}`)}
                     >
                       <FontAwesomeIcon icon={faClockRotateLeft} />
                     </Button>

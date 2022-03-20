@@ -12,7 +12,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClockRotateLeft } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-// import AddTransactionModal from "./AddTransactionModal";
+import { useNavigate } from "react-router-dom";
 
 const TableUser = () => {
   useEffect(() => {
@@ -29,6 +29,7 @@ const TableUser = () => {
     });
   };
 
+  const navigate = useNavigate();
   return (
     <div>
       <Container>
@@ -69,9 +70,9 @@ const TableUser = () => {
 
           <tbody>
             {products &&
-              products.map((item) => (
+              products.map((item, index) => (
                 <tr key={item.id}>
-                  <td>{item.no}</td>
+                  <td>{index}</td>
                   <td>{item.code}</td>
                   <td>{item.name}</td>
                   <td>{item.minimal_stock}</td>
@@ -81,7 +82,7 @@ const TableUser = () => {
                     <Button
                       variant="outline-dark"
                       className="mx-1"
-                      href="/user-history"
+                      onClick={() => navigate(`/user-history/${item.id}`)}
                     >
                       <FontAwesomeIcon icon={faClockRotateLeft} />
                     </Button>
